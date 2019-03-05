@@ -1,0 +1,65 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+
+import { FormsModule } from '@angular/forms';
+import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
+import { InMemoryDataService } from './Services/in-memory-data.service';
+
+// Material
+import {
+  MatButtonModule,
+  MatGridListModule,
+  MatChipsModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatFormFieldModule, MatNativeDateModule
+} from '@angular/material';
+
+const material = [
+  MatButtonModule,
+  MatGridListModule,
+  MatChipsModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatFormFieldModule, MatNativeDateModule
+];
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent,
+    DashboardComponent,
+    HeroSearchComponent
+  ],
+  imports: [
+    ...material, // Material
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatGridListModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+    InMemoryDataService, { dataEncapsulation: false }
+)
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

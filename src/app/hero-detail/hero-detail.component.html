@@ -1,0 +1,17 @@
+<div class="padding" *ngIf="hero">
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div>
+    <span>ID: </span>{{hero.id}}
+  </div>
+  <br>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>
+  <br>
+  <div class="flex">
+    <button mat-flat-button color="primary" (click)="goBack()">go back</button>
+    <button mat-flat-button color="primary" (click)="save()">save</button>
+  </div>
+</div>
